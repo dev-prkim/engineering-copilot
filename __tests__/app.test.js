@@ -45,10 +45,10 @@ describe('openApp', () => {
 // ---------------------------------------------------------------------------
 
 describe('translate', () => {
-  test('writes translate prompt to clipboard and opens chatgpt://', async () => {
-    await translate();
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(PROMPTS.translate);
+  test('opens chatgpt:// and writes translate prompt to clipboard', () => {
+    translate();
     expect(window.location.href).toBe('chatgpt://');
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(PROMPTS.translate);
   });
 
   test('translate prompt contains slack and language detection instruction', () => {
