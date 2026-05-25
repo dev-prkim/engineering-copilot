@@ -14,8 +14,8 @@ function openApp(url) {
 }
 
 async function translate() {
-  await navigator.clipboard.writeText(PROMPTS.translate);
   openApp('chatgpt://');
+  navigator.clipboard.writeText(PROMPTS.translate);
 }
 
 async function refactor() {
