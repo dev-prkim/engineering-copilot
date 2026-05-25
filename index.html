@@ -33,6 +33,15 @@
     </div>
   </div>
 
+  <div class="screen hidden" id="paste">
+    <h1>번역할 텍스트 붙여넣기</h1>
+    <textarea id="paste-input" placeholder="여기에 붙여넣기 (⌘V / 길게 탭)"></textarea>
+    <div class="menu">
+      <button onclick="confirmPaste()">번역하기 →</button>
+      <button class="back" onclick="showScreen('main')">← 뒤로</button>
+    </div>
+  </div>
+
   <div class="toast hidden" id="toast"></div>
 
   <script src="app.js"></script>
