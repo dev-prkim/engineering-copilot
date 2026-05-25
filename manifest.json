@@ -1,7 +1,8 @@
 {
   "name": "Engineering Copilot",
   "short_name": "Copilot",
-  "start_url": "/",
+  "start_url": "/engineering-copilot/",
+  "scope": "/engineering-copilot/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
