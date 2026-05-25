@@ -16,7 +16,7 @@
   <div class="screen" id="main">
     <h1>Engineering Copilot</h1>
     <div class="menu">
-      <button onclick="translate()">번역<span class="desc">텍스트 입력 → 프롬프트 복사 → Claude 열기</span></button>
+      <button onclick="translate()">번역<span class="desc">프롬프트 복사 → GPT 열기</span></button>
       <button onclick="refactor()">리팩토링<span class="desc">프롬프트 복사 → Claude 열기</span></button>
       <button onclick="showScreen('ai')">AI 앱 열기<span class="desc">GPT · Gemini · Claude 선택</span></button>
       <button onclick="issueLog()">이슈 정리<span class="desc">프롬프트 복사 → Claude 열기</span></button>
@@ -33,15 +33,6 @@
     </div>
   </div>
 
-  <div class="screen hidden" id="paste">
-    <h1>번역할 텍스트 붙여넣기</h1>
-    <textarea id="paste-input" placeholder="여기에 붙여넣기 (⌘V / 길게 탭)"></textarea>
-    <div class="menu">
-      <button onclick="confirmPaste()">번역하기 →</button>
-      <button class="back" onclick="showScreen('main')">← 뒤로</button>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

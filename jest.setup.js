@@ -4,9 +4,6 @@ const path = require('path');
 document.body.innerHTML = `
   <div class="screen" id="main"></div>
   <div class="screen hidden" id="ai"></div>
-  <div class="screen hidden" id="paste">
-    <textarea id="paste-input"></textarea>
-  </div>
 `;
 
 Object.defineProperty(navigator, 'clipboard', {
@@ -24,4 +21,4 @@ window.location = { href: '' };
 const src = fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8');
 eval(src);
 
-Object.assign(global, { PROMPTS, showScreen, openApp, translate, confirmPaste, refactor, issueLog });
+Object.assign(global, { PROMPTS, showScreen, openApp, translate, refactor, issueLog });
