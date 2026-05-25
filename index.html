@@ -16,10 +16,10 @@
   <div class="screen" id="main">
     <h1>Engineering Copilot</h1>
     <div class="menu">
-      <button onclick="translate()">번역</button>
-      <button onclick="refactor()">리팩토링</button>
-      <button onclick="showScreen('ai')">AI 앱 열기</button>
-      <button onclick="issueLog()">이슈 정리</button>
+      <button onclick="translate()">번역<span class="desc">텍스트 입력 → 프롬프트 복사 → Claude 열기</span></button>
+      <button onclick="refactor()">리팩토링<span class="desc">프롬프트 복사 → Claude 열기</span></button>
+      <button onclick="showScreen('ai')">AI 앱 열기<span class="desc">GPT · Gemini · Claude 선택</span></button>
+      <button onclick="issueLog()">이슈 정리<span class="desc">프롬프트 복사 → Claude 열기</span></button>
     </div>
   </div>
 
@@ -41,8 +41,6 @@
       <button class="back" onclick="showScreen('main')">← 뒤로</button>
     </div>
   </div>
-
-  <div class="toast hidden" id="toast"></div>
 
   <script src="app.js"></script>
 </body>
