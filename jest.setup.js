@@ -21,4 +21,4 @@ window.location = { href: '' };
 const src = fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8');
 eval(src);
 
-Object.assign(global, { PROMPTS, showScreen, openApp, translate, refactor, issueLog });
+Object.assign(global, { PROMPTS, showScreen, openApp, runTranslate, refactor, issueLog });
