@@ -12,30 +12,46 @@ function showScreen(id) {
 function toast(msg) {
   const el = document.getElementById('toast');
   el.textContent = msg;
+  el.classList.remove('hidden');
   el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 2000);
+  setTimeout(() => {
+    el.classList.remove('show');
+    el.classList.add('hidden');
+  }, 2000);
 }
 
 function openApp(url) {
   window.location.href = url;
 }
 
+async function copyAndOpen(text, url) {
+  await navigator.clipboard.writeText(text);
+  toast('클립보드에 복사됐어요. Claude에 붙여넣기 하세요.');
+  setTimeout(() => openApp(url), 1200);
+}
+
 async function translate() {
   try {
     const clip = await navigator.clipboard.readText();
-    await navigator.clipboard.writeText(PROMPTS.translate + clip);
-    openApp('claude://');
+    if (!clip.trim()) throw new Error('empty');
+    await copyAndOpen(PROMPTS.translate + clip, 'claude://');
   } catch {
-    toast('클립보드 권한이 필요합니다');
+    showScreen('paste');
   }
 }
 
+async function confirmPaste() {
+  const text = document.getElementById('paste-input').value.trim();
+  if (!text) { toast('텍스트를 입력해주세요'); return; }
+  document.getElementById('paste-input').value = '';
+  showScreen('main');
+  await copyAndOpen(PROMPTS.translate + text, 'claude://');
+}
+
 async function refactor() {
-  await navigator.clipboard.writeText(PROMPTS.refactor);
-  openApp('claude://');
+  await copyAndOpen(PROMPTS.refactor, 'claude://');
 }
 
 async function issueLog() {
-  await navigator.clipboard.writeText(PROMPTS.issue);
-  openApp('claude://');
+  await copyAndOpen(PROMPTS.issue, 'claude://');
 }
