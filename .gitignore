@@ -7,6 +7,9 @@ credentials.json
 *secret*
 *password*
 
+# Docs (internal, not for public repo)
+docs/
+
 # macOS
 .DS_Store
 
