@@ -1,18 +1,18 @@
-# iOS Shortcuts 구현 스펙
+# Engineering Copilot
 
 ## 기술스택
-- 런타임: iOS Shortcuts 앱
-- 텍스트 전달: Clipboard
+- 런타임: PWA (홈화면 추가 → 단독 실행)
+- 언어: HTML / CSS / JS (바닐라)
+- 클립보드: Clipboard API
 - 앱 실행: URL Scheme (`claude://`, `chatgpt://`, `https://gemini.google.com`)
 
 ## 구조
-홈화면 아이콘 1개 → Choose from Menu → 각 항목 분기
+홈화면 아이콘 → 메인 메뉴 → 각 항목 실행
 
 ## 구현 패턴
-각 메뉴 항목은 동일한 패턴으로 동작한다:
-1. 프롬프트 텍스트를 클립보드에 복사 (번역은 클립보드 텍스트를 프롬프트에 결합)
-2. 대상 앱 URL Scheme으로 열기
-3. 사용자가 앱에서 클립보드 붙여넣기 후 전송
+- 번역: 클립보드 읽기 → 프롬프트 결합 → 클립보드 쓰기 → `claude://` 열기
+- 리팩토링 / 이슈 정리: 프롬프트 클립보드 쓰기 → `claude://` 열기
+- AI 앱 열기: 서브 메뉴 → 선택된 앱 URL 열기
 
 ---
 

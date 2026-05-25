@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Copilot">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
+  <title>Engineering Copilot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="screen" id="main">
+    <h1>Engineering Copilot</h1>
+    <div class="menu">
+      <button onclick="translate()">번역</button>
+      <button onclick="refactor()">리팩토링</button>
+      <button onclick="showScreen('ai')">AI 앱 열기</button>
+      <button onclick="issueLog()">이슈 정리</button>
+    </div>
+  </div>
+
+  <div class="screen hidden" id="ai">
+    <h1>AI 앱 열기</h1>
+    <div class="menu">
+      <button onclick="openApp('chatgpt://')">GPT</button>
+      <button onclick="openApp('https://gemini.google.com')">Gemini</button>
+      <button onclick="openApp('claude://')">Claude</button>
+      <button class="back" onclick="showScreen('main')">← 뒤로</button>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
