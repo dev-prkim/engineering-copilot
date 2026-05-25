@@ -1,8 +1,6 @@
 beforeEach(() => {
   document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
   document.getElementById('main').classList.remove('hidden');
-  document.getElementById('paste-input').value = '';
-
   navigator.clipboard.readText.mockReset();
   navigator.clipboard.writeText.mockReset().mockResolvedValue(undefined);
   window.location.href = '';
@@ -47,46 +45,16 @@ describe('openApp', () => {
 // ---------------------------------------------------------------------------
 
 describe('translate', () => {
-  test('shows paste screen', () => {
-    translate();
-    expect(document.getElementById('paste').classList.contains('hidden')).toBe(false);
-    expect(document.getElementById('main').classList.contains('hidden')).toBe(true);
+  test('writes translate prompt to clipboard and opens chatgpt://', async () => {
+    await translate();
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(PROMPTS.translate);
+    expect(window.location.href).toBe('chatgpt://');
   });
 
-  test('does not touch clipboard or open app', () => {
-    translate();
-    expect(navigator.clipboard.readText).not.toHaveBeenCalled();
-    expect(navigator.clipboard.writeText).not.toHaveBeenCalled();
-    expect(window.location.href).toBe('');
-  });
-});
-
-// ---------------------------------------------------------------------------
-// confirmPaste
-// ---------------------------------------------------------------------------
-
-describe('confirmPaste', () => {
-  test('writes prompt + input text to clipboard and opens claude://', async () => {
-    document.getElementById('paste-input').value = 'hello world';
-    await confirmPaste();
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-      PROMPTS.translate + 'hello world'
-    );
-    expect(window.location.href).toBe('claude://');
-  });
-
-  test('clears input and returns to main screen after confirm', async () => {
-    document.getElementById('paste-input').value = 'some text';
-    await confirmPaste();
-    expect(document.getElementById('paste-input').value).toBe('');
-    expect(document.getElementById('main').classList.contains('hidden')).toBe(false);
-  });
-
-  test('does nothing when input is empty', async () => {
-    document.getElementById('paste-input').value = '   ';
-    await confirmPaste();
-    expect(navigator.clipboard.writeText).not.toHaveBeenCalled();
-    expect(window.location.href).toBe('');
+  test('translate prompt contains slack and language detection instruction', () => {
+    expect(PROMPTS.translate).toMatch(/슬랙/);
+    expect(PROMPTS.translate).toMatch(/한국어/);
+    expect(PROMPTS.translate).toMatch(/영어/);
   });
 });
 
