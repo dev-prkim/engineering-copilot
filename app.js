@@ -13,7 +13,7 @@ function openApp(url) {
   window.location.href = url;
 }
 
-function translate() {
+function runTranslate() {
   navigator.clipboard.writeText(PROMPTS.translate);
   openApp('chatgpt://');
 }

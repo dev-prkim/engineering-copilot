@@ -44,9 +44,9 @@ describe('openApp', () => {
 // translate
 // ---------------------------------------------------------------------------
 
-describe('translate', () => {
+describe('runTranslate', () => {
   test('opens chatgpt:// and writes translate prompt to clipboard', () => {
-    translate();
+    runTranslate();
     expect(window.location.href).toBe('chatgpt://');
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(PROMPTS.translate);
   });
