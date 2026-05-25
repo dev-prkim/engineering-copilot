@@ -13,9 +13,9 @@ function openApp(url) {
   window.location.href = url;
 }
 
-async function translate() {
-  openApp('chatgpt://');
+function translate() {
   navigator.clipboard.writeText(PROMPTS.translate);
+  openApp('chatgpt://');
 }
 
 async function refactor() {
